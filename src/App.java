@@ -6,14 +6,21 @@ public class App {
         Random r = new Random();
         Scanner in = new Scanner(System.in);
 
+        //Aluksi syötetään haluttu alkurahasumma pelaamiseen
+
         System.out.println("Syötä alkuraha.");
         double raha = in.nextDouble();
 
+        //Aloitetaan loop
 
         do{
+
+            //Käyttäjä valitsee paljon rahaa haluaa pelata alkurahasta (max 5)
+
             System.out.println("Syötä haluttu rahamäärä " + "(Sinulla on " + raha + " euroa)");
             double bet = in.nextDouble();
         
+            //Tarkistetaan meneekö raha yli tai ali maksimi/minimi summan
 
             if(bet <= raha && bet > 0)
             {
@@ -25,6 +32,8 @@ public class App {
                 continue;
             }
 
+            //Tulostetaan 3 random lukua ja tulostetaan ne
+
             int n1 = r.nextInt(10)+1;
             int n2 = r.nextInt(10)+1;
             int n3 = r.nextInt(10)+1;
@@ -33,6 +42,8 @@ public class App {
             System.out.println(n1);
             System.out.println(n2);
             System.out.println(n3);
+
+            //Lasketaan random numeroista saadut seiskat ja tulostetaan se näkyviin käyttäjälle
 
             if(n1 == 7)
             {
@@ -48,6 +59,8 @@ public class App {
             }
 
             System.out.println("Sait " + seiskat + " seiskaa.");
+
+            //Jos seiskoja on enemmän kuin nolla niin voitat, mutta jos niitä on 0 niin häviät
             
             if(seiskat > 0)
             {
@@ -61,8 +74,12 @@ public class App {
                 raha -= bet;
             }
 
+            //Tulostetaan jäljellä oleva rahasumma voiton tai häviön jälkeen
+
             System.out.println("Sinulla on " + raha + "€");
             in.nextLine();
+
+            //Kysytään haluaako käyttäjä pelata uudestaan, jos hän vastaa ei ("n") niin loop loppuu
 
             System.out.println("Haluatko pelata uudestaan? (voit lopettaa kirjoittamalla n)");
 
@@ -76,6 +93,9 @@ public class App {
             
 
         }
+
+        //Jos käyttäjä vastaa mitään muuta kuin n niin peli jatkuu niin kauan kun rahaa on enemmän kuin 0,01
+
         while(raha > 0.01);
 
 
