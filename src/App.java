@@ -10,6 +10,10 @@ public class App {
 
         System.out.println("Syötä alkuraha.");
         double raha = in.nextDouble();
+        int pelimaara = 0;
+        double totalVoitot = 0;
+        double totalHaviot = 0;
+
 
         //Aloitetaan loop
 
@@ -67,23 +71,26 @@ public class App {
                 double voitot = bet * seiskat;
                 System.out.println("Voitit " + voitot + "€");
                 raha += voitot;
+                totalVoitot += voitot;
             }
             else
             {
                 System.out.println("Hävisit");
                 raha -= bet;
+                totalHaviot += bet;
+
             }
 
             //Tulostetaan jäljellä oleva rahasumma voiton tai häviön jälkeen
 
             System.out.println("Sinulla on " + raha + "€");
             in.nextLine();
+            ++pelimaara;
 
             //Kysytään haluaako käyttäjä pelata uudestaan, jos hän vastaa ei ("n") niin loop loppuu
 
             System.out.println("Haluatko pelata uudestaan? (voit lopettaa kirjoittamalla n)");
 
-        
             String vastaus = in.nextLine();
 
             if(vastaus.equals("n"))
@@ -98,8 +105,9 @@ public class App {
 
         while(raha > 0.01);
 
-
-
+        System.out.println("Voitit yhteensä " + totalVoitot + "euroa.");
+        System.out.println("Hävisit yhteensä " + totalHaviot + "euroa.");
+        System.out.println("Pelasit " + pelimaara + " kertaa.");
 
     }
 }
